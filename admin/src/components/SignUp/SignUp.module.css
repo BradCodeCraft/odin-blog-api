@@ -1,0 +1,15 @@
+@import url("../../index.css");
+
+.signUpPage {
+  justify-content: center;
+
+  min-height: 90vh;
+}
+
+.signUpPage .error {
+  color: var(--bittersweet);
+}
+
+.signUpPage .error > h2 {
+  text-align: center;
+}

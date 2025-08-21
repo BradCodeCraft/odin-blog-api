@@ -1,0 +1,30 @@
+@import url("../../index.css");
+
+.commentsPage {
+  align-items: flex-start;
+
+  padding: 0 20px;
+}
+
+.comments {
+  width: 100%;
+}
+
+.commentCard {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+.commentCard > p {
+  grid-row: 2;
+}
+
+.commentButtons {
+  grid-column: 2;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

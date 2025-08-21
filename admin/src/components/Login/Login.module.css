@@ -1,0 +1,15 @@
+@import url("../../index.css");
+
+.loginPage {
+  justify-content: center;
+
+  min-height: 90vh;
+}
+
+.loginPage .error {
+  color: var(--bittersweet);
+}
+
+.loginPage .error > h2 {
+  text-align: center;
+}

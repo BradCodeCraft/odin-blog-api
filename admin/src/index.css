@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  cursor: default;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1.2rem;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --anti-flash-white: #ebebeb;
+  --eerie-black: #242424;
+  --bittersweet: #f76c5e;
+  --true-blue: #4062bb;
+  --gamboge: #f0a202;
+}
+
+a {
+  color: var(--gamboge);
+
+  font-size: 1.2rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonLink,
+.button,
+.form button {
+  background-color: var(--gamboge);
+
+  color: var(--eerie-black);
+  font-weight: bold;
+  text-decoration: none;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+}
+
+.buttonLink,
+.button {
+  padding: 0px 20px;
+}
+
+.buttonLink {
+  font-size: 1.2rem;
+}
+
+.button,
+.form button {
+  padding: 5px 20px;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  border: none;
+}
+
+.form,
+.form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  gap: 20px;
+}
+
+.form input,
+.form textarea,
+.form label {
+  font-size: 1.2rem;
+}
+
+.form textarea,
+.form input {
+  padding: 4px 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--eerie-black);
+    background-color: var(--anti-flash-white);
+  }
+}
