@@ -23,12 +23,12 @@ async function getAllPosts(req, res) {
  */
 async function createNewPost(req, res) {
   try {
-    const { title, content } = req.body;
+    const { title, content, userId } = req.body;
     const post = await prisma.post.create({
       data: {
         title: title,
         content: content,
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
 

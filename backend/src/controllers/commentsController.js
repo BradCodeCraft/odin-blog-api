@@ -86,9 +86,10 @@ async function deleteCommentById(req, res) {
  */
 async function getCommentsByAuthorId(req, res) {
   try {
+    const { userId } = req.body;
     const comments = await prisma.comment.findMany({
       where: {
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
 
@@ -104,9 +105,10 @@ async function getCommentsByAuthorId(req, res) {
  */
 async function deleteCommentsByAuthorId(req, res) {
   try {
+    const { userId } = req.body;
     await prisma.comment.deleteMany({
       where: {
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
 
@@ -123,10 +125,11 @@ async function deleteCommentsByAuthorId(req, res) {
 async function getCommentByAuthorIdAndCommentId(req, res) {
   try {
     const { commentId } = req.params;
+    const { userId } = req.body;
     const comment = await prisma.comment.findFirst({
       where: {
         id: parseInt(commentId),
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
 
@@ -143,10 +146,11 @@ async function getCommentByAuthorIdAndCommentId(req, res) {
 async function updateCommentByAuthorIdAndCommentId(req, res) {
   try {
     const { commentId } = req.params;
+    const { userId } = req.body;
     const comment = await prisma.comment.findFirst({
       where: {
         id: parseInt(commentId),
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
 
@@ -183,7 +187,7 @@ async function deleteCommentByAuthorIdAndCommentId(req, res) {
     await prisma.comment.delete({
       where: {
         id: parseInt(commentId),
-        userId: parseInt(req.user.id),
+        userId: parseInt(userId),
       },
     });
   } catch (error) {
@@ -220,14 +224,14 @@ async function getCommentsByPostId(req, res) {
 async function createCommentByPostId(req, res) {
   try {
     const { postId } = req.params;
-    const { content } = req.body;
+    const { content, userId } = req.body;
 
     if (content) {
       const newComment = await prisma.comment.create({
         data: {
           content: content,
           postId: parseInt(postId),
-          userId: parseInt(req.user.id),
+          userId: parseInt(userId),
         },
       });
 
