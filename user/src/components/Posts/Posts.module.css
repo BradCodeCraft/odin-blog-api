@@ -1,0 +1,46 @@
+@import url("../../index.css");
+
+.postsPage {
+  align-items: flex-start;
+
+  padding: 0 20px;
+}
+
+.postsPage > header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.postCard {
+  display: block;
+  padding: 10px 60px;
+
+  background-color: var(--true-blue);
+
+  color: var(--anti-flash-white);
+  text-decoration: none;
+
+  will-change: transform;
+  transition: transform 0.25s ease-in-out;
+}
+
+.postCard:hover {
+  transform: scale(1.05);
+}
+
+.postCard:hover {
+  transform: scale(1.05);
+}
+
+.postCard:active {
+  transform: scale(0.95);
+}

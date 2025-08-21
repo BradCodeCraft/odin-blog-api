@@ -1,0 +1,55 @@
+@import url("../../index.css");
+
+.viewPostPage {
+  position: relative;
+
+  align-items: flex-start;
+
+  padding: 5px 20px;
+}
+
+.viewPostPage > h2 {
+  font-style: italic;
+}
+
+.viewPostPage > p {
+  margin-top: 20px;
+}
+
+.postHeader {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.viewPostButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comments {
+  width: 100%;
+}
+
+.comments > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentCard {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+.commentCard p {
+  grid-column: 1;
+}
+
+.commentCard button {
+  grid-row: 1 / -1;
+  grid-column: 2;
+}

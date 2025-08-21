@@ -1,0 +1,10 @@
+@import url("../../index.css");
+
+.homePage {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.homePage > .buttonLink {
+  margin-top: 20px;
+}

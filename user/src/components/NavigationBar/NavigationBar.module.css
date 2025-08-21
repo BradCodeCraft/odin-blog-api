@@ -1,0 +1,29 @@
+@import url("../../index.css");
+
+.navigationBar {
+  width: 100%;
+  padding: 5px 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigationBar > ul {
+  list-style: none;
+}
+
+.navigationBar > ul:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  padding: 0;
+
+  background-color: transparent;
+
+  font-weight: normal;
+  text-decoration: underline;
+  color: var(--gamboge);
+}
