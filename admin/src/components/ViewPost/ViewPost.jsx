@@ -75,15 +75,19 @@ export default function ViewPost() {
     getCommentsByPostId();
   }, []);
 
-  async function deletePostById() {
+  /**
+   * @param {Number} commentId
+   */
+  async function deleteCommentById(commentId) {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER}/posts/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.delete(
+        `${import.meta.env.VITE_SERVER}/comments/${commentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
-
-      navigate("/posts");
+      );
     } catch (error) {
       console.error(error);
     }
@@ -100,19 +104,6 @@ export default function ViewPost() {
           <div className={`${styles.postHeader}`}>
             <h1>{post.title}</h1>
             <div className={styles.viewPostButtons}>
-              <Link
-                className={styles.buttonLink}
-                to={`/posts/${postId}/edit`}
-                state={{ postId: postId }}
-              >
-                Edit
-              </Link>
-              <button
-                onClick={() => deletePostById()}
-                className={styles.button}
-              >
-                Delete
-              </button>
               <Link className={styles.buttonLink} to={`/posts`}>
                 Back
               </Link>
@@ -146,6 +137,13 @@ export default function ViewPost() {
                     <div key={comment.id} className={`${styles.commentCard}`}>
                       <h3>{comment.user.username}</h3>
                       <p>{comment.content}</p>
+
+                      <button
+                        onClick={() => deleteCommentById(comment.id)}
+                        className={`${styles.button}`}
+                      >
+                        Delete
+                      </button>
                     </div>
                   );
                 })}

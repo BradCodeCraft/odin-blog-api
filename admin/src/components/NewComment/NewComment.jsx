@@ -8,7 +8,7 @@ export default function NewComment() {
   const location = useLocation();
   const postId = location.state.postId;
   const [content, setContent] = useState("");
-  const { token } = useOutletContext();
+  const { user, token } = useOutletContext();
 
   /**
    * @param {Event} e
@@ -21,6 +21,7 @@ export default function NewComment() {
         `${import.meta.env.VITE_SERVER}/posts/${postId}/comments`,
         {
           content: content,
+          userId: user.id,
         },
         {
           headers: {

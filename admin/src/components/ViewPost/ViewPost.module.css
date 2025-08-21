@@ -37,3 +37,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.commentCard {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+
+.commentCard p {
+  grid-column: 1;
+}
+
+.commentCard button {
+  grid-row: 1 / -1;
+  grid-column: 2;
+}

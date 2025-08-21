@@ -7,7 +7,7 @@ export default function NewPost() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { token } = useOutletContext();
+  const { user, token } = useOutletContext();
 
   /**
    * @param {Event} e
@@ -21,6 +21,7 @@ export default function NewPost() {
         {
           title: title,
           content: content,
+          user: user.id,
         },
         {
           headers: {
