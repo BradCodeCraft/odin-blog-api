@@ -7,6 +7,83 @@ const prisma = new PrismaClient();
  * @param {request} req
  * @param {response} res
  */
+async function getAllComments(req, res) {
+  try {
+    const comments = await prisma.comment.findMany({
+      include: { user: true },
+    });
+
+    res.json(comments);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * @param {request} req
+ * @param {response} res
+ */
+async function getCommentById(req, res) {
+  try {
+    const { commentId } = req.params;
+    const comment = await prisma.comment.findFirst({
+      where: {
+        id: parseInt(commentId),
+      },
+    });
+
+    res.json(comment);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * @param {request} req
+ * @param {response} res
+ */
+async function updateCommentById(req, res) {
+  try {
+    const { commentId } = req.params;
+    const { content } = req.body;
+    const comment = await prisma.comment.update({
+      where: {
+        id: parseInt(commentId),
+      },
+      data: {
+        content: content,
+      },
+    });
+
+    res.json(comment);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * @param {request} req
+ * @param {response} res
+ */
+async function deleteCommentById(req, res) {
+  try {
+    const { commentId } = req.params;
+    const comment = await prisma.comment.delete({
+      where: {
+        id: parseInt(commentId),
+      },
+    });
+
+    res.status(204);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * @param {request} req
+ * @param {response} res
+ */
 async function getCommentsByAuthorId(req, res) {
   try {
     const comments = await prisma.comment.findMany({
@@ -125,6 +202,9 @@ async function getCommentsByPostId(req, res) {
       where: {
         postId: parseInt(postId),
       },
+      include: {
+        user: true,
+      },
     });
 
     res.json(comments);
@@ -238,6 +318,10 @@ async function deleteCommentByPostIdAndCommentId(req, res) {
 }
 
 export default {
+  getAllComments,
+  getCommentById,
+  updateCommentById,
+  deleteCommentById,
   getCommentsByAuthorId,
   deleteCommentsByAuthorId,
   getCommentByAuthorIdAndCommentId,

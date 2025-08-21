@@ -60,7 +60,7 @@ passport.use(
       try {
         const user = await prisma.user.findFirst({
           where: {
-            id: jwt_payload.userId,
+            id: jwt_payload.sub,
           },
         });
 

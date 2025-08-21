@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
  */
 async function createNewUser(req, res) {
   try {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     const hashedPassword = await bcrypt.hash(
       password,
       parseInt(process.env.SALT),
@@ -20,6 +20,7 @@ async function createNewUser(req, res) {
       data: {
         username: username,
         password: hashedPassword,
+        role: role,
       },
     });
 
@@ -37,7 +38,9 @@ async function grantJwtToAuthenticatedUser(req, res) {
   try {
     const token = jwt.sign({ user: req.user }, process.env.JWT_SECRET);
 
-    res.status(200).json({ message: "Authenticated", token: token });
+    res
+      .status(200)
+      .json({ message: "Authenticated", user: req.user, token: token });
   } catch (error) {
     console.error(error);
   }

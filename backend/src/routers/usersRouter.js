@@ -8,7 +8,7 @@ usersRouter.route("/").post(controllers.usersController.createNewUser);
 usersRouter
   .route("/login")
   .post(
-    passport.authenticate("local", { failureRedirect: "/login" }),
+    passport.authenticate("local"),
     controllers.usersController.grantJwtToAuthenticatedUser,
   );
 usersRouter

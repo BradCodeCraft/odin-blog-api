@@ -63,6 +63,9 @@ async function getPostById(req, res) {
       where: {
         id: parseInt(postId),
       },
+      include: {
+        user: true,
+      },
     });
 
     res.json(post);

@@ -20,8 +20,9 @@ app.use(
 app.use(passport.session());
 app.use(cors());
 
-app.use("/users", routers.usersRouter);
-app.use("/posts", routers.postsRouter);
+app.use("/api/v1/users", routers.usersRouter);
+app.use("/api/v1/posts", routers.postsRouter);
+app.use("/api/v1/comments", routers.commentsRouter);
 app.use((err, req, res, next) => {
   res.status(404).json({ error: err.message });
 });

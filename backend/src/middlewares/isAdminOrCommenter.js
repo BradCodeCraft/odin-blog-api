@@ -10,11 +10,10 @@ import { PrismaClient } from "../../generated/prisma/client.js";
  */
 async function isAdminOrCommenter(req, res, next) {
   try {
-    const { postId, commentId } = req.params;
+    const { commentId } = req.params;
     const prisma = new PrismaClient();
     const comment = await prisma.comment.findFirst({
       where: {
-        postId: parseInt(postId),
         id: parseInt(commentId),
       },
     });
